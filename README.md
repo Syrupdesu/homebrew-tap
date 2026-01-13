@@ -1,6 +1,6 @@
 # Syrupdesu Homebrew Tap
 
-这是 **Syrupdesu** 的个人 Homebrew Tap 仓库，包含了 Kazumi 等应用的安装配方！
+这是 Syrup 的个人 Homebrew Tap 仓库，包含了 Kazumi 等应用的安装配方！
 
 ## 如何安装这些软件？
 
