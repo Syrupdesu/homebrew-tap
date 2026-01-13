@@ -4,7 +4,7 @@ cask "kazumi" do
 
   url "https://github.com/Predidit/Kazumi/releases/download/#{version}/Kazumi_macos_#{version}.dmg"
   name "Kazumi"
-  desc "A custom-rule-based anime scraping and online viewing application, built with Flutter."
+  desc "A custom-rule-based anime scraping and online viewing application, built with Flutter"
   homepage "https://kazumi.app/"
 
   # Documentation: https://docs.brew.sh/Brew-Livecheck
