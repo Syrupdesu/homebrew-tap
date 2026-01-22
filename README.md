@@ -11,5 +11,4 @@ brew tap syrupdesu/tap
 
 ### Available Applications 
 - Kazumi 
-- Mos-beta 
 - PiliPlus
