@@ -3,18 +3,18 @@ cask "playcover-community@nightly" do
   sha256 :no_check
 
   url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg.zip",
-      verified: "nightly.link"
+      verified: "nightly.link/"
   name "PlayCover Community (Nightly)"
   desc "Sideload iOS apps and games on Apple Silicon"
   homepage "https://github.com/PlayCover/PlayCover"
-
-  depends_on arch: :arm64
-  depends_on macos: ">= :monterey"
 
   conflicts_with cask: [
     "playcover-community",
     "playcover-community@beta",
   ]
+  depends_on arch: :arm64
+  depends_on macos: ">= :monterey"
+
   app "PlayCover.app"
 
   zap trash: [
