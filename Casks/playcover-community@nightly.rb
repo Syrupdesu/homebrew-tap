@@ -2,7 +2,7 @@ cask "playcover-community@nightly" do
   version "1409"
   sha256 :no_check
 
-  url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg.zip"
+  url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg.zip",
       verified: "nightly.link"
   name "PlayCover Community (Nightly)"
   desc "Sideload iOS apps and games on Apple Silicon"
