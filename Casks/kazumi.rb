@@ -1,17 +1,11 @@
 cask "kazumi" do
-  version "1.9.4"
-  sha256 "65e74fbf144a6363685ec6a7510c584182f31ae23c07a1f2352a36e826a29bc2"
+  version "2.0.4"
+  sha256 :no_check
 
-  url "https://github.com/Predidit/Kazumi/releases/download/#{version}/Kazumi_macos_#{version}.dmg",
-      verified: "github.com/Predidit/Kazumi/"
+  url "https://github.com/Predidit/Kazumi/releases/download/#{version}/Kazumi_macos_#{version}.dmg"
   name "Kazumi"
-  desc "Rule-based anime scraping and online viewing application"
-  homepage "https://kazumi.app/"
-
-  livecheck do
-    url :url
-    strategy :github_latest
-  end
+  desc "基于自定义规则的番剧采集APP"
+  homepage "https://github.com/Predidit/Kazumi"
 
   app "Kazumi.app"
 end
