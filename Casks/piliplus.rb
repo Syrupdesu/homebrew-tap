@@ -10,9 +10,9 @@ cask "piliplus" do
   livecheck do
     url :url
     strategy :github_latest do |json|
-      json["assets"]&.map do |asset|
+      json["assets"]&.filter_map do |asset|
         match = asset["browser_download_url"]&.match(%r{/download/v?([^/]+)/PiliPlus_macos_v?([^/]+)\+(\d+)\.dmg}i)
-        next if match.blank?
+        next if match.nil?
 
         "#{match[1]},#{match[2]},#{match[3]}"
       end
