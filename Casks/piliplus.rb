@@ -7,8 +7,6 @@ cask "piliplus" do
   desc "Third-party bilibili client developed with Flutter"
   homepage "https://github.com/bggRGjQaUbCoE/PiliPlus"
 
-  app "PiliPlus.app"
-
   livecheck do
     url :url
     strategy :github_latest do |json|
@@ -20,4 +18,6 @@ cask "piliplus" do
       end
     end
   end
+
+  app "PiliPlus.app"
 end
