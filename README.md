@@ -10,6 +10,6 @@ brew tap syrupdesu/tap
 ```
 
 ### Available Applications 
-- Kazumi 
-- PiliPlus
-- Playcover Nightly
+- [Kazumi](https://github.com/Predidit/Kazumi)
+- [PiliPlus](https://github.com/bggRGjQaUbCoE/PiliPlus)
+- [Playcover Nightly](https://github.com/PlayCover/PlayCover)
