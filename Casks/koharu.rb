@@ -4,8 +4,8 @@ cask "koharu" do
 
   url "https://github.com/mayocream/koharu/releases/download/#{version}/koharu_#{version}_aarch64.dmg"
   name "Koharu"
-  desc "ML-powered manga translator, written in Rust."
+  desc "ML-powered manga translator, written in Rust"
   homepage "https://github.com/mayocream/koharu"
 
-  app "koharu.app" 
+  app "koharu.app"
 end
