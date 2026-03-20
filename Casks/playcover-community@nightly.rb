@@ -1,5 +1,5 @@
 cask "playcover-community@nightly" do
-  version "1424"
+  version "1425"
   sha256 :no_check
 
   url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg.zip",
