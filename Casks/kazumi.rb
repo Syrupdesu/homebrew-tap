@@ -1,5 +1,5 @@
 cask "kazumi" do
-  version "2.0.5"
+  version "2.0.6"
   sha256 :no_check
 
   url "https://github.com/Predidit/Kazumi/releases/download/#{version}/Kazumi_macos_#{version}.dmg"
