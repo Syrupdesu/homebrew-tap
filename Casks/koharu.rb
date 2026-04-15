@@ -1,5 +1,5 @@
 cask "koharu" do
-  version "0.43.2"
+  version "0.44.2"
   sha256 :no_check
 
   url "https://github.com/mayocream/koharu/releases/download/#{version}/koharu_#{version}_aarch64.dmg"
