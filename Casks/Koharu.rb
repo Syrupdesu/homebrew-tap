@@ -3,7 +3,7 @@ cask "koharu" do
   sha256 "0e88daac0ff0a75a310db056fadc15076f6e8fe64857337ace83d3ecbfc50676"
 
   url "https://github.com/mayocream/koharu/releases/download/#{version}/koharu_#{version}_aarch64.dmg",
-    verified: "github.com/mayocream/koharu/"
+      verified: "github.com/mayocream/koharu/"
   name "Koharu"
   desc "ML-powered manga translator, written in Rust"
   homepage "https://koharu.rs/"
