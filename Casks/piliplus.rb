@@ -11,7 +11,9 @@ cask "piliplus" do
   url :url
   strategy :github_latest do |json|
     json["assets"]&.filter_map do |asset|
-      match = asset["browser_download_url"]&.match(%r{/download/v?([^/]+)/PiliPlus_macos_v?([^/]+)(?:\+|%2B)(\d+)\.dmg}i)
+      url = asset["browser_download_url"]
+      re = %r{/download/v?([^/]+)/PiliPlus_macos_v?([^/]+)(?:\+|%2B)(\d+)\.dmg}i
+      match = url&.match(re)
       next if match.nil?
 
       "#{match[1]},#{match[2]},#{match[3]}"
