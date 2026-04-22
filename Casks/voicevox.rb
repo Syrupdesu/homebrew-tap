@@ -3,12 +3,12 @@ cask "voicevox" do
 
   on_arm do
     url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-arm64-#{version}.zip"
-    sha256 "REPLACE_WITH_ARM64_SHA256"
+    sha256 "a1501e26a5759f5cf7ec571bb82a33c227e61ee66646f8e17c3504441085d99d"
   end
 
   on_intel do
     url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-x64-#{version}.zip"
-    sha256 "REPLACE_WITH_X64_SHA256"
+    sha256 "9a7ff1391b85ec57c070128a137a3010c44d3b376487272d36f479f28ca20289"
   end
 
   name "VOICEVOX"
