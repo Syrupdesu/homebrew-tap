@@ -8,18 +8,18 @@ cask "piliplus" do
   homepage "https://github.com/bggRGjQaUbCoE/PiliPlus"
 
   livecheck do
-  url :url
-  strategy :github_latest do |json|
-    json["assets"]&.filter_map do |asset|
-      url = asset["browser_download_url"]
-      re = %r{/download/v?([^/]+)/PiliPlus_macos_v?([^/]+)(?:\+|%2B)(\d+)\.dmg}i
-      match = url&.match(re)
-      next if match.nil?
+    url :url
+    strategy :github_latest do |json|
+      json["assets"]&.filter_map do |asset|
+        url = asset["browser_download_url"]
+        re = %r{/download/v?([^/]+)/PiliPlus_macos_v?([^/]+)(?:\+|%2B)(\d+)\.dmg}i
+        match = url&.match(re)
+        next if match.nil?
 
-      "#{match[1]},#{match[2]},#{match[3]}"
+        "#{match[1]},#{match[2]},#{match[3]}"
+      end
     end
   end
-end
 
   app "PiliPlus.app"
 end
