@@ -28,10 +28,10 @@ cask "voicevox" do
   app "VOICEVOX/VOICEVOX.app"
 
   zap trash: [
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/jp.hiroshiba.voicevox.sfl3",
-    "~/Library/Application Support/voicevox*",
-    "~/Library/Logs/voicevox",
-    "~/Library/Preferences/jp.hiroshiba.voicevox.plist",
-  ],
-  rmdir: "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments"
+        "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/jp.hiroshiba.voicevox.sfl*",
+        "~/Library/Application Support/voicevox*",
+        "~/Library/Logs/voicevox",
+        "~/Library/Preferences/jp.hiroshiba.voicevox.plist",
+      ],
+      rmdir: "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments"
 end
