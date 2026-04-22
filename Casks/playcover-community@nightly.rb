@@ -24,8 +24,8 @@ cask "playcover-community@nightly" do
   app "PlayCover.app"
 
   zap trash: [
-       "~/Library/HTTPStorages/io.playcover.PlayCover",
-       "~/Library/Preferences/io.playcover.PlayCover.plist",
     "~/Library/Containers/io.playcover.PlayCover",
+    "~/Library/HTTPStorages/io.playcover.PlayCover",
+    "~/Library/Preferences/io.playcover.PlayCover.plist",
   ]
 end
