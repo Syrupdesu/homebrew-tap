@@ -23,7 +23,7 @@ cask "voicevox" do
     strategy :github_latest
   end
 
-  app "VOICEVOX.app"
+  app "VOICEVOX/VOICEVOX.app"
 
   zap trash: [
     "~/Library/Application Support/voicevox",
