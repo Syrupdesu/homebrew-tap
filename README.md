@@ -13,3 +13,4 @@ brew tap syrupdesu/tap
 - [Kazumi](https://github.com/Predidit/Kazumi)
 - [PiliPlus](https://github.com/bggRGjQaUbCoE/PiliPlus)
 - [Playcover Nightly](https://github.com/PlayCover/PlayCover)
+- [VOICEVOX](https://github.com/VOICEVOX/voicevox)
