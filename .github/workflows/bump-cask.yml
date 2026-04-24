@@ -1,37 +1,17 @@
-name: Bump Cask
+name: Bump All Casks in Tap
 
 on:
   schedule:
-    - cron: '0 9 * * *'
-  workflow_dispatch:
+    - cron: '0 0 * * *' # 每天运行
+  workflow_dispatch: # 允许手动点击
 
 jobs:
-  bump:
-    name: Bump outdated casks
+  bump-all:
     runs-on: macos-latest
     steps:
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
-
-      - name: Configure git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Tap
-        run: brew tap Syrupdesu/homebrew-tap
-
-      - name: Bump outdated casks
-        env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          for cask in kazumi piliplus "playcover-community@nightly"; do
-            echo "Checking $cask..."
-            brew livecheck --cask "Syrupdesu/homebrew-tap/$cask" --quiet --newer-only \
-              | grep . && brew bump-cask-pr \
-                --no-audit \
-                --no-browse \
-                --message="Bumped by GitHub Actions" \
-                "Syrupdesu/homebrew-tap/$cask" \
-              || echo "$cask is up to date"
-          done
+      - name: Bump all casks
+        uses: Homebrew/actions/bump-packages@master
+        with:
+          token: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+          tap: ${{ github.repository }} 
+          livecheck: true
