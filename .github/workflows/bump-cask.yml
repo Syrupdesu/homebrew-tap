@@ -19,18 +19,21 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
-          casks=(kazumi piliplus)
+          casks=(kazumi piliplus voicevox)
 
           for cask in "${casks[@]}"; do
             echo "==> Checking $cask"
 
-            version=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask" | tee /dev/stderr \
-              | python3 -c "import sys,json; data=json.load(sys.stdin)[0]; print(data.get('version', {}).get('latest', ''))")
+            livecheck_json=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask")
 
-            if [ -z "$version" ]; then
-              echo "⚠️  $cask: livecheck failed, skipping"
+            outdated=$(echo "$livecheck_json" | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['version']['outdated'])")
+
+            if [ "$outdated" != "True" ]; then
+              echo "==> $cask is up to date, skipping"
               continue
             fi
+
+            version=$(echo "$livecheck_json" | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['version']['latest'])")
 
             echo "==> Latest version: $version"
 
