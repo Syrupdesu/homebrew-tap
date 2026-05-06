@@ -1,11 +1,11 @@
 cask "playcover-community@nightly" do
   version "1477"
-  sha256 "120bd31bc6155d812b04db4a45982acf28030ccf59199bc14dfae82f447397b2"
+  sha256 "3cbe34ed3cc311263c8f2540a502479b342070ba83f81813afc0f5c853667da9"
 
   url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg.zip",
       verified: "nightly.link/"
   name "PlayCover Community (Nightly)"
-  desc "Sideload iOS apps and games on Apple Silicon"
+  desc "Sideload iOS apps and games"
   homepage "https://github.com/PlayCover/PlayCover"
 
   livecheck do
@@ -25,8 +25,11 @@ cask "playcover-community@nightly" do
   app "PlayCover.app"
 
   zap trash: [
+    "~/Library/Application Support/io.playcover.PlayCover",
+    "~/Library/Caches/io.playcover.PlayCover",
     "~/Library/Containers/io.playcover.PlayCover",
-    "~/Library/HTTPStorages/io.playcover.PlayCover",
+    "~/Library/Frameworks/PlayTools.framework",
     "~/Library/Preferences/io.playcover.PlayCover.plist",
+    "~/Library/Saved Application State/io.playcover.PlayCover.savedState",
   ]
 end
