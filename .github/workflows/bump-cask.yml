@@ -19,7 +19,7 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
-          casks=(kazumi piliplus voicevox playcover-community@nightly)
+          casks=(kazumi piliplus voicevox)
 
           for cask in "${casks[@]}"; do
             echo "==> Checking $cask"
