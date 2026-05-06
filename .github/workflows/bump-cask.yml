@@ -24,8 +24,8 @@ jobs:
           for cask in "${casks[@]}"; do
             echo "==> Checking $cask"
 
-            version=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask" \
-              | python3 -c "import sys,json; d=json.load(sys.stdin)[0]; print(d['version']['latest'])")
+            version=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask" | tee /dev/stderr \
+              | python3 -c "import sys,json; data=json.load(sys.stdin)[0]; print(data.get('version', {}).get('latest', ''))")
 
             if [ -z "$version" ]; then
               echo "⚠️  $cask: livecheck failed, skipping"
