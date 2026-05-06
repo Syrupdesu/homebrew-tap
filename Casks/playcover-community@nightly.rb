@@ -9,9 +9,9 @@ cask "playcover-community@nightly" do
   homepage "https://github.com/PlayCover/PlayCover"
 
   livecheck do
-    url "https://nightly.link/PlayCover/PlayCover/workflows/2.nightly_release/develop/PlayCover_nightly_#{version}.dmg"
-    regex(/PlayCover_nightly_(\d+)\.dmg/i)
-    strategy :page_match
+  url "https://api.github.com/repos/PlayCover/PlayCover/actions/workflows/2.nightly_release.yml/runs?status=success&per_page=1"
+  strategy :json do |json|
+    json["workflow_runs"].first["run_number"].to_s
   end
 
   conflicts_with cask: [
