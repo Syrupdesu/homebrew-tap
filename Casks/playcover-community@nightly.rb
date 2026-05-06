@@ -13,6 +13,7 @@ cask "playcover-community@nightly" do
   strategy :json do |json|
     json["workflow_runs"].first["run_number"].to_s
   end
+end
 
   conflicts_with cask: [
     "playcover-community",
