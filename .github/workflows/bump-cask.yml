@@ -1,17 +1,31 @@
-name: Bump All Casks in Tap
+name: Auto Bump Casks
 
 on:
   schedule:
-    - cron: '0 0 * * *' # 每天运行
-  workflow_dispatch: # 允许手动点击
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
-  bump-all:
+  bump:
     runs-on: macos-latest
     steps:
-      - name: Bump all casks
-        uses: Homebrew/actions/bump-packages@master
-        with:
-          token: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
-          tap: ${{ github.repository }} 
-          livecheck: true
+      - name: Configure Homebrew
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        run: |
+          brew tap Syrupdesu/homebrew-tap
+
+      - name: Bump casks
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        run: |
+          casks=(kazumi voicevox)
+
+          for cask in "${casks[@]}"; do
+            echo "==> Checking $cask"
+            brew bump-cask-pr \
+              --tap Syrupdesu/homebrew-tap \
+              --no-browse \
+              "$cask" \
+            || echo "⚠️  $cask: no update or error, skipping"
+          done
