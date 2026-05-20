@@ -20,7 +20,7 @@ cask "playcover-community@nightly" do
     "playcover-community@beta",
   ]
   depends_on arch: :arm64
-  depends_on macos: ">= :monterey"
+  depends_on macos: :monterey
 
   app "PlayCover.app"
 
