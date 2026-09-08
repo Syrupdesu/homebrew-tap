@@ -1,38 +1,41 @@
-      - name: Bump casks
+# brew tap-new uses this file to generate an autobump workflow for the new tap
+name: brew bump
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/autobump.yml
+  schedule:
+    # Every day at 7:30 UTC
+    - cron: 30 7 * * *
+
+permissions: {}
+
+defaults:
+  run:
+    shell: bash -xeuo pipefail {0}
+
+jobs:
+  autobump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@3cdb78d0f62ad29dd32de765782654f4eedea607 # 2026.08.31.1
+
+      - name: Set up git
+        id: git_setup
+        uses: Homebrew/actions/git-user-config@3cdb78d0f62ad29dd32de765782654f4eedea607 # 2026.08.31.1
+
+      - name: Bump formulae
         env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
-          HOMEBREW_NO_AUTO_UPDATE: 1
-        run: |
-          set +e
-          casks=(kazumi piliplus voicevox)
-          for cask in "${casks[@]}"; do
-            echo "==> Checking $cask"
-            livecheck_json=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask" 2>&1)
-            lc_status=$?
-            if [ $lc_status -ne 0 ]; then
-              echo "⚠️  $cask: livecheck 执行失败 (exit $lc_status)"
-              echo "$livecheck_json"
-              continue
-            fi
-
-            outdated=$(echo "$livecheck_json" | jq -r '.[0].version.outdated // empty')
-            if [ "$outdated" != "true" ]; then
-              echo "==> $cask is up to date, skipping"
-              continue
-            fi
-
-            version=$(echo "$livecheck_json" | jq -r '.[0].version.latest // empty')
-            if [ -z "$version" ]; then
-              echo "⚠️  $cask: 拿不到最新版本号，跳过"
-              continue
-            fi
-
-            echo "==> Latest version: $version"
-            brew bump-cask-pr \
-              --no-browse \
-              --version "$version" \
-              "Syrupdesu/homebrew-tap/$cask"
-            if [ $? -ne 0 ]; then
-              echo "⚠️  $cask: bump failed or already up to date, skipping"
-            fi
-          done
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
+          HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
+          TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
+        run: brew bump --no-fork --open-pr --formulae --bump-synced --tap="$TAP_NAME"

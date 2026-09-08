@@ -1,47 +1,38 @@
-name: Auto Bump Casks
-
-on:
-  schedule:
-    - cron: '0 6 * * *'
-  workflow_dispatch:
-
-jobs:
-  bump:
-    runs-on: macos-latest
-    steps:
-      - name: Configure Homebrew
-        env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
-        run: |
-          brew tap Syrupdesu/homebrew-tap
-          brew trust Syrupdesu/homebrew-tap
-
       - name: Bump casks
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+          HOMEBREW_NO_AUTO_UPDATE: 1
         run: |
+          set +e
           casks=(kazumi piliplus voicevox)
-
           for cask in "${casks[@]}"; do
             echo "==> Checking $cask"
+            livecheck_json=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask" 2>&1)
+            lc_status=$?
+            if [ $lc_status -ne 0 ]; then
+              echo "⚠️  $cask: livecheck 执行失败 (exit $lc_status)"
+              echo "$livecheck_json"
+              continue
+            fi
 
-            livecheck_json=$(brew livecheck --cask --json "Syrupdesu/homebrew-tap/$cask")
-
-            outdated=$(echo "$livecheck_json" | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['version']['outdated'])")
-
-            if [ "$outdated" != "True" ]; then
+            outdated=$(echo "$livecheck_json" | jq -r '.[0].version.outdated // empty')
+            if [ "$outdated" != "true" ]; then
               echo "==> $cask is up to date, skipping"
               continue
             fi
 
-            version=$(echo "$livecheck_json" | python3 -c "import sys,json; print(json.load(sys.stdin)[0]['version']['latest'])")
+            version=$(echo "$livecheck_json" | jq -r '.[0].version.latest // empty')
+            if [ -z "$version" ]; then
+              echo "⚠️  $cask: 拿不到最新版本号，跳过"
+              continue
+            fi
 
             echo "==> Latest version: $version"
-
             brew bump-cask-pr \
               --no-browse \
               --version "$version" \
-              "Syrupdesu/homebrew-tap/$cask" \
-            || echo "⚠️  $cask: bump failed or already up to date, skipping"
+              "Syrupdesu/homebrew-tap/$cask"
+            if [ $? -ne 0 ]; then
+              echo "⚠️  $cask: bump failed or already up to date, skipping"
+            fi
           done
-          
