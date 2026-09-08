@@ -12,7 +12,7 @@ cask "kazumi" do
     strategy :github_latest
   end
 
-  depends_on :macos
+  depends_on macos: :monterey
 
   app "Kazumi.app"
 end
