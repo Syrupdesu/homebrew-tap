@@ -14,7 +14,7 @@ cask "playcover-community@nightly" do
     end
   end
 
-  conflicts_with cask: [  
+  conflicts_with cask: [
     "playcover-community",
     "playcover-community@beta",
   ]
