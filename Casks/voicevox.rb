@@ -1,12 +1,8 @@
 cask "voicevox" do
   version "0.25.2"
+  sha256 "ce92131cbd3131b3ff641b003561146494377fc7922f2f7a6beb480dc54842e8"
 
-  on_arm do
-    sha256 "ce92131cbd3131b3ff641b003561146494377fc7922f2f7a6beb480dc54842e8"
-
-    url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-arm64-#{version}.zip",
-  end
-
+  url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-arm64-#{version}.zip"
   name "VOICEVOX"
   desc "Free Japanese text-to-speech software"
   homepage "https://voicevox.hiroshiba.jp/"
