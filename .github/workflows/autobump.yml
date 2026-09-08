@@ -1,4 +1,3 @@
-# brew tap-new uses this file to generate an autobump workflow for the new tap
 name: brew bump
 
 on:
@@ -8,8 +7,8 @@ on:
     paths:
       - .github/workflows/autobump.yml
   schedule:
-    # Every day at 7:30 UTC
-    - cron: 30 7 * * *
+    # Every day at 20:10 UTC
+    - cron: 10 20 * * *
 
 permissions: {}
 
@@ -32,10 +31,11 @@ jobs:
         id: git_setup
         uses: Homebrew/actions/git-user-config@3cdb78d0f62ad29dd32de765782654f4eedea607 # 2026.08.31.1
 
-      - name: Bump formulae
+      - name: Bump casks
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_GIT_COMMITTER_NAME: ${{ steps.git_setup.outputs.name }}
           HOMEBREW_GIT_COMMITTER_EMAIL: ${{ steps.git_setup.outputs.email }}
           TAP_NAME: ${{ steps.set-up-homebrew.outputs.tap-name }}
-        run: brew bump --no-fork --open-pr --formulae --bump-synced --tap="$TAP_NAME"
+        run: brew bump --no-fork --open-pr --casks --bump-synced --tap="$TAP_NAME"
+        
