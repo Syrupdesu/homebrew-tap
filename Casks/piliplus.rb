@@ -21,7 +21,7 @@ cask "piliplus" do
     end
   end
 
-  depends_on :macos
+  depends_on macos: :monterey
 
   app "PiliPlus.app"
 end
