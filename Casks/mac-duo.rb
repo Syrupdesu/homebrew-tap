@@ -7,7 +7,7 @@ cask "mac-duo" do
   desc "Adds the iPhone Duo lid-closing effect to MacBooks"
   homepage "https://github.com/sumimakito/Mac-Duo"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Mac Duo.app"
 
