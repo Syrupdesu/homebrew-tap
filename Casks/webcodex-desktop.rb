@@ -21,8 +21,8 @@ cask "webcodex-desktop" do
 
   zap trash: [
     "~/Library/Application Support/WebCodex Desktop",
+    "~/Library/Logs/WebCodex Desktop",
     "~/Library/Preferences/dev.webcodex.desktop.plist",
     "~/Library/Saved Application State/dev.webcodex.desktop.savedState",
-    "~/Library/Logs/WebCodex Desktop",
   ]
 end
