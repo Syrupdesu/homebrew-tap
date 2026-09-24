@@ -20,9 +20,9 @@ cask "webcodex-desktop" do
   app "WebCodex Desktop.app"
 
   zap trash: [
-    "~/Library/Application Support/WebCodex Desktop",
-    "~/Library/Logs/WebCodex Desktop",
-    "~/Library/Preferences/dev.webcodex.desktop.plist",
-    "~/Library/Saved Application State/dev.webcodex.desktop.savedState",
-  ]
+       "~/Library/Application Support/dev.webcodex.desktop",
+       "~/Library/Caches/dev.webcodex.desktop",
+       "~/Library/Preferences/dev.webcodex.desktop.plist",
+       "~/Library/WebKit/dev.webcodex.desktop",
+     ]
 end
