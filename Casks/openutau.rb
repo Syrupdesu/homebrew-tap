@@ -1,6 +1,6 @@
 cask "openutau" do
-  version "0.1.570.16-alpha"
-  sha256 "8b0a933ad17d28ba2dd6005ad13a6110daf822ac3374128de373119479f7bbbc"
+  version "0.1.572.1-alpha"
+  sha256 "03152e6619e61b7a37a8a378ab11aab48b28bb0a4d646686c4006f86be6656bc"
 
   url "https://github.com/openutau/OpenUtau/releases/download/#{version}/OpenUtau-osx-arm64.dmg"
   name "OpenUtau"
