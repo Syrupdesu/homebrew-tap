@@ -1,9 +1,9 @@
 cask "webcodex-desktop" do
   arch arm: "arm64", intel: "x64"
 
-  version "0.4.3"
-  sha256 arm:   "e0c127e97d4ae9b3c0db844a1b0092558fe0f98b045204cde582a0860a1f828b",
-         intel: "d93d6dbcf3a998c1ed061a7d289f8125d7418a5c0cb867c47e24fd9214a918f4"
+  version "0.4.5"
+  sha256 arm:   "b0e28f76de6ad0da594527da59134c971cfa420d35437ba55393739ccb31f048",
+         intel: "2826ddf61e6a01c1eb13c3cd904887c719445884ecf21c140ed97488f388f988"
 
   url "https://github.com/yyjeqhc/webcodex/releases/download/v#{version}/webcodex-desktop-v#{version}-darwin-#{arch}.dmg"
   name "WebCodex Desktop"
