@@ -1,6 +1,6 @@
 cask "msime" do
-  version "0.52.0"
-  sha256 "eba2346d3447fb72a81bfa06386b5ca93225ba41b47727070ccd5a30418fcc17"
+  version "0.53.0"
+  sha256 "5b6fb4bcbc3004d7a250bf516b78001597a73942096e21f2891ba6c01309f636"
 
   url "https://github.com/metasequoiaime/msime/releases/download/macos-v#{version}/msime-macos-#{version}-universal.dmg"
   name "MSIME"
