@@ -8,7 +8,7 @@ cask "playcover-community@nightly" do
   homepage "https://github.com/PlayCover/PlayCover"
 
   livecheck do
-    api_token = ENV["HOMEBREW_GITHUB_API_TOKEN"]
+    api_token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN", nil)
     headers = ["Accept: application/vnd.github+json"]
     headers << "Authorization: Bearer #{api_token}" if api_token
 
