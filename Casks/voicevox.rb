@@ -1,6 +1,6 @@
 cask "voicevox" do
-  version "0.25.2"
-  sha256 "ce92131cbd3131b3ff641b003561146494377fc7922f2f7a6beb480dc54842e8"
+  version "0.26.1"
+  sha256 "ed5f5eba92b6b2913e5c98cdc314823f40f9abfc8781f0d547a84c13353966f3"
 
   url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-arm64-#{version}.zip"
   name "VOICEVOX"
@@ -12,7 +12,7 @@ cask "voicevox" do
     strategy :github_latest
   end
 
-  depends_on :macos
+  depends_on macos: :monterey
 
   app "VOICEVOX/VOICEVOX.app"
 
