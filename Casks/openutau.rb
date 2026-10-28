@@ -1,6 +1,6 @@
 cask "openutau" do
-  version "0.1.577.5-alpha"
-  sha256 "72ac6ffc60996e2cbebf3479f78d5ff9b417814819584d9562f242e8c8210be9"
+  version "0.1.576"
+  sha256 "38017f593a4438d2e003b04d86a3b06d32de71039b6a3405189bc5de395a7307"
 
   url "https://github.com/openutau/OpenUtau/releases/download/#{version}/OpenUtau-osx-arm64.dmg"
   name "OpenUtau"
@@ -9,12 +9,7 @@ cask "openutau" do
 
   livecheck do
     url :url
-    regex(/^v?(\d+(?:\.\d+)+(?:[-.]\w+)*)$/i)
-    # OpenUtau's releases are all pre-releases, which :github_releases skips
-    # by default, so match tags directly to keep the -alpha suffix
-    strategy :github_releases do |json, regex|
-      json.map { |release| release["tag_name"]&.[](regex, 1) }
-    end
+    strategy :github_latest
   end
 
   depends_on arch: :arm64
