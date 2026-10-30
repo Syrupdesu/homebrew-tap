@@ -1,4 +1,4 @@
-cask "biliup-app" do
+cask "biliup" do
   version "1.4.2"
 
   on_arm do
@@ -29,5 +29,9 @@ cask "biliup-app" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/biliup-app.app"]
   end
 
-  zap trash: "~/Library/Application Support/biliup"
+  zap trash: [
+    "~/Library/Application Support/biliup",
+    "~/Library/Caches/com.biliup.app",
+    "~/Library/WebKit/com.biliup.app",
+  ]
 end
