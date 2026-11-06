@@ -1,6 +1,6 @@
 cask "voicevox" do
-  version "0.26.1"
-  sha256 "ed5f5eba92b6b2913e5c98cdc314823f40f9abfc8781f0d547a84c13353966f3"
+  version "0.26.2"
+  sha256 "3da773c2acfdb3e1f317865ab9b453c92491a53af0cbbdb9e6d13c4e6b82bb75"
 
   url "https://github.com/VOICEVOX/voicevox/releases/download/#{version}/voicevox-macos-cpu-arm64-#{version}.zip"
   name "VOICEVOX"
